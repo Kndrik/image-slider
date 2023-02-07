@@ -82,7 +82,11 @@ const scrollManager = (() => {
     const update = () => {
         const leftAmount = (currentIndex-1) * -700;
         slider.style.setProperty('left', `${leftAmount}px`);
+        window.clearTimeout(autoScroll); 
+        autoScroll = window.setTimeout(scrollManager.next, 5000);
     }
 
     return { next, prev, goToSlide };
 })();
+
+let autoScroll = window.setTimeout(scrollManager.next, 5000);
